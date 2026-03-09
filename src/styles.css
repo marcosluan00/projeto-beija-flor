@@ -1,1 +1,69 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  
+  --color-brand-terracota: #7c2d12;
+  --color-brand-amber: #f59e0b;
+  --color-brand-purple: #2f243a;
+  --color-brand-light: #fffaf5;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: var(--color-brand-light);
+    color: var(--color-brand-purple);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+  }
+}
+
+@layer components {
+  /* Premium Glassmorphism Card Effect */
+  .card-glass {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-[0_8px_32px_rgba(47,36,58,0.06)] rounded-2xl;
+  }
+  
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-brand-terracota text-white px-6 py-3 font-medium transition-all duration-300 hover:bg-[#63240e] hover:shadow-lg hover:-translate-y-0.5;
+  }
+  
+  .btn-accent {
+    @apply inline-flex items-center justify-center rounded-full bg-brand-amber text-brand-purple px-6 py-3 font-semibold transition-all duration-300 hover:bg-[#f3b53a] hover:shadow-lg hover:-translate-y-0.5;
+  }
+  
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-full border border-brand-purple/20 bg-transparent text-brand-purple px-6 py-3 font-medium transition-all duration-300 hover:bg-brand-purple/5;
+  }
+
+  /* Typography Utilities */
+  .section-title {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold leading-tight;
+  }
+  
+  .section-subtitle {
+    @apply mt-4 text-lg text-brand-purple/70 max-w-2xl leading-relaxed font-sans;
+  }
+  
+  /* Layout Utilities */
+  .section-container {
+    @apply max-w-7xl mx-auto px-5 sm:px-6 lg:px-8;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

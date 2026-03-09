@@ -1,0 +1,124 @@
+<!-- NOTÍCIA DETALHE HERO -->
+<section class="relative pt-32 pb-20 min-h-[50vh] flex items-center bg-brand-light overflow-hidden">
+  <div class="absolute inset-0 z-0">
+    <img src="https://picsum.photos/1920/1080?random=800" alt="Capa da Notícia" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-t from-brand-purple via-brand-purple/80 to-brand-purple/40"></div>
+  </div>
+
+  <div class="section-container relative z-10 w-full">
+    <div class="max-w-4xl mx-auto">
+      
+      <!-- Back Button -->
+      <a routerLink="/noticias" class="inline-flex items-center gap-2 text-white/80 hover:text-white mb-8 group transition-colors">
+        <div class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:bg-brand-terracota group-hover:scale-110 transition-all border border-white/20">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <span class="font-medium">Voltar para Notícias</span>
+      </a>
+
+      <!-- Categoria/Tag -->
+      <div class="inline-flex items-center gap-2 rounded-full border border-brand-terracota/30 bg-brand-terracota/20 backdrop-blur-md px-4 py-1.5 text-xs text-brand-amber font-bold tracking-wider uppercase mb-6 shadow-sm">
+        Premiações
+      </div>
+
+      <!-- Título da Notícia -->
+      <h1 class="text-4xl md:text-5xl lg:text-showcase font-bold font-serif text-white mb-6 leading-tight">
+        O espetáculo “As Cores do Amor” conquista o coração do público no festival estadual
+      </h1>
+
+      <!-- Meta Informações -->
+      <div class="flex flex-wrap items-center gap-6 text-white/70 text-sm font-medium">
+        <div class="flex items-center gap-2">
+          <img src="https://ui-avatars.com/api/?name=Diretoria&background=0D8ABC&color=fff" alt="Autor" class="w-8 h-8 rounded-full border border-white/20">
+          <span>Por <strong class="text-white">Diretoria Instituto Beija-Flor</strong></span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-amber" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+          12 de Julho, 2026
+        </div>
+        <div class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-amber" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          5 min de leitura
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTEÚDO DA NOTÍCIA -->
+<section class="py-20 lg:py-24 bg-white relative">
+  <div class="absolute top-0 right-0 w-[30%] h-[50%] rounded-l-full bg-brand-terracota/5 blur-[120px] pointer-events-none"></div>
+
+  <div class="section-container relative z-10">
+    <div class="max-w-3xl mx-auto">
+      
+      <!-- Corpo do Texto (Usando a tipografia premium) -->
+      <div class="prose prose-lg md:prose-xl prose-headings:font-serif prose-headings:text-brand-purple prose-p:text-brand-purple/80 prose-p:leading-relaxed prose-a:text-brand-terracota">
+        
+        <p class="text-xl md:text-2xl font-serif text-brand-terracota leading-relaxed mb-8 italic">
+          "Foi uma jornada intensa de meses de ensaio, pesquisa histórica e engajamento da comunidade que culminou em uma apresentação inesquecível na arena do parque de exposições."
+        </p>
+
+        <p>
+          Na noite do último sábado, a Junina Beija-Flor brilhou intensamente e arrebatou não apenas os jurados, mas todo o público presente com seu espetáculo inédito "As Cores do Amor". Com figurinos deslumbrantes, coreografias marcadas por uma precisão impressionante e uma trilha sonora original que misturou ritmos regionais com arranjos sinfônicos, o grupo se consagrou o grande campeão do festival.
+        </p>
+
+        <h3>O Processo Criativo</h3>
+        
+        <p>
+          A direção artística deste ano propôs um mergulho profundo nas raízes culturais do estado de Roraima, homenageando as lendas locais e a diversidade da nossa terra. "A ideia sempre foi mostrar que a tradição caipira pode, sim, dialogar de forma muito elegante com o espetáculo cênico moderno", explica o coreógrafo principal da equipe.
+        </p>
+
+        <p>
+          Os destaques do desfile foram os adereços sustentáveis, desenvolvidos em parceria com comunidades ribeirinhas, que utilizaram fibras naturais e elementos reciclados, provando o compromisso do Instituto Beija-Flor também com a responsabilidade ambiental e o protagonismo social de seus parceiros artesãos.
+        </p>
+
+        <!-- Imagem Embutida no Meio do Texto -->
+        <figure class="my-12">
+          <img src="https://picsum.photos/800/500?random=801" alt="Momento ápice da apresentação" class="w-full h-auto rounded-2xl shadow-xl">
+          <figcaption class="text-center text-sm text-brand-purple/60 mt-4 italic">Momento ápice onde o casal de noivos evolui na arena principal.</figcaption>
+        </figure>
+
+        <h3>Próximos Passos e Oportunidades</h3>
+
+        <p>
+          Com o título em mãos, o grupo já se prepara para a turnê nacional, levando as cores e a alegria de Roraima para outros grandes centros de cultura popular. Enquanto isso, o Bloco Me Beija e o projeto Anarriê Alavantú já abriram vagas para novos talentos da comunidade que desejam ingressar nas oficinas de base.
+        </p>
+        
+        <p>
+          Agradecemos profundamente a todos os nossos patrocinadores, apoiadores e, claro, a grandiosa família Beija-Flor, formada por dançarinos, costureiras, músicos e familiares que doam seu suor e lágrimas por esse projeto. O voo do Beija-Flor só está começando!
+        </p>
+
+      </div>
+
+      <!-- Compartilhe e Tags -->
+      <div class="mt-16 pt-8 border-t border-brand-purple/10 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <span class="text-sm font-bold uppercase tracking-wider text-brand-purple/50">Tags:</span>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-brand-light rounded-full text-sm font-medium text-brand-purple/70">Quadrilha</span>
+            <span class="px-3 py-1 bg-brand-light rounded-full text-sm font-medium text-brand-purple/70">Campeonato</span>
+            <span class="px-3 py-1 bg-brand-light rounded-full text-sm font-medium text-brand-purple/70">Cultura</span>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <span class="text-sm font-bold uppercase tracking-wider text-brand-purple/50">Compartilhar:</span>
+          <!-- Botões de Compartilhar (Visuais) -->
+          <div class="flex gap-2">
+             <button class="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center hover:-translate-y-1 transition-transform shadow-md">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.418-.099.824z"/></svg>
+             </button>
+             <button class="w-10 h-10 rounded-full bg-[#1DA1F2] text-white flex items-center justify-center hover:-translate-y-1 transition-transform shadow-md">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+             </button>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
