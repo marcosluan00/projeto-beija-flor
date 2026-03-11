@@ -19,7 +19,9 @@
         <a routerLink="/projetos" class="nav-link hover:text-brand-terracota transition-colors">Projetos</a>
         <a routerLink="/noticias" class="nav-link hover:text-brand-terracota transition-colors">Notícias</a>
         <a routerLink="/galeria" class="nav-link hover:text-brand-terracota transition-colors">Galeria</a>
+        @if(false){
         <a routerLink="/transparencia" class="nav-link hover:text-brand-terracota transition-colors">Transparência</a>
+        }
       </nav>
 
       <div class="hidden lg:flex items-center gap-4">
@@ -60,8 +62,10 @@
         class="border-b border-brand-purple/10 pb-4 hover:text-brand-terracota transition-colors">Notícias</a>
       <a routerLink="/galeria" (click)="toggleMobileMenu()"
         class="border-b border-brand-purple/10 pb-4 hover:text-brand-terracota transition-colors">Galeria</a>
+      @if(false){
       <a routerLink="/transparencia" (click)="toggleMobileMenu()"
         class="border-b border-brand-purple/10 pb-4 hover:text-brand-terracota transition-colors">Transparência</a>
+      }
 
       <div class="pt-6">
         <a routerLink="/contato" (click)="toggleMobileMenu()" class="btn-primary w-full text-center py-4">
