@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +12,17 @@ import { CommonModule } from '@angular/common';
 export class NavbarComponent {
   isMobileMenuOpen = false;
 
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
   toggleMobileMenu() {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
+    
+    if (isPlatformBrowser(this.platformId)) {
+      if (this.isMobileMenuOpen) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    }
   }
 }

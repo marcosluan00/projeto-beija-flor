@@ -50,25 +50,25 @@
 
   <!-- Mobile Menu Overlay -->
   @if (isMobileMenuOpen) {
-  <div class="fixed inset-0 z-40 bg-white pt-24 px-6 lg:hidden overflow-y-auto animate-fade-in">
-    <nav class="flex flex-col gap-6 text-xl font-bold font-serif text-brand-purple">
+  <div class="fixed inset-0 z-40 bg-white/95 backdrop-blur-md px-6 lg:hidden overflow-y-auto animate-fade-in flex flex-col pt-24 pb-12 h-[100dvh]">
+    <nav class="flex flex-col gap-5 text-2xl font-bold font-serif text-brand-purple">
       <a routerLink="/" (click)="toggleMobileMenu()"
-        class="border-b border-brand-purple/10 pb-4 hover:text-brand-terracota transition-colors">Início</a>
+        class="border-b border-brand-purple/10 py-4 hover:text-brand-terracota transition-colors">Início</a>
       <a routerLink="/institucional" (click)="toggleMobileMenu()"
-        class="border-b border-brand-purple/10 pb-4 hover:text-brand-terracota transition-colors">Institucional</a>
+        class="border-b border-brand-purple/10 py-4 hover:text-brand-terracota transition-colors">Institucional</a>
       <a routerLink="/projetos" (click)="toggleMobileMenu()"
-        class="border-b border-brand-purple/10 pb-4 hover:text-brand-terracota transition-colors">Projetos</a>
+        class="border-b border-brand-purple/10 py-4 hover:text-brand-terracota transition-colors">Projetos</a>
       <a routerLink="/noticias" (click)="toggleMobileMenu()"
-        class="border-b border-brand-purple/10 pb-4 hover:text-brand-terracota transition-colors">Notícias</a>
+        class="border-b border-brand-purple/10 py-4 hover:text-brand-terracota transition-colors">Notícias</a>
       <a routerLink="/galeria" (click)="toggleMobileMenu()"
-        class="border-b border-brand-purple/10 pb-4 hover:text-brand-terracota transition-colors">Galeria</a>
+        class="border-b border-brand-purple/10 py-4 hover:text-brand-terracota transition-colors">Galeria</a>
       @if(false){
       <a routerLink="/transparencia" (click)="toggleMobileMenu()"
-        class="border-b border-brand-purple/10 pb-4 hover:text-brand-terracota transition-colors">Transparência</a>
+        class="border-b border-brand-purple/10 py-4 hover:text-brand-terracota transition-colors">Transparência</a>
       }
 
-      <div class="pt-6">
-        <a routerLink="/contato" (click)="toggleMobileMenu()" class="btn-primary w-full text-center py-4">
+      <div class="pt-8">
+        <a routerLink="/contato" (click)="toggleMobileMenu()" class="btn-primary w-full text-center py-5 text-xl shadow-xl">
           Fale Conosco
         </a>
       </div>
