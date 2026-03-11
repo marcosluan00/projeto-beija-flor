@@ -1,12 +1,13 @@
-<header class="sticky top-0 z-50 transition-all duration-300 backdrop-blur-xl bg-white/70 border-b border-white/40 shadow-[0_4px_30px_rgba(47,36,58,0.05)]">
+<header
+  class="sticky top-0 z-50 transition-all duration-300 backdrop-blur-xl bg-white/70 border-b border-white/40 shadow-[0_4px_30px_rgba(47,36,58,0.05)]">
   <div class="section-container">
     <div class="flex items-center justify-between py-4">
       <a routerLink="/" class="flex items-center gap-3 group" (click)="isMobileMenuOpen = false">
-        <div class="h-12 w-12 rounded-xl bg-gradient-to-br from-brand-terracota to-brand-amber text-white flex items-center justify-center font-bold font-serif text-xl shadow-lg transition-transform duration-300 group-hover:scale-105 group-hover:rotate-3">
-          BF
-        </div>
+        <img src="logo-beija-flor.png" alt="Logo Instituto Beija-Flor"
+          class="h-12 w-auto transition-transform duration-300 group-hover:scale-105">
         <div class="flex flex-col">
-          <span class="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.24em] text-brand-amber leading-tight">Instituto Cultural</span>
+          <span
+            class="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.24em] text-brand-amber leading-tight">Instituto</span>
           <span class="text-xl sm:text-2xl font-bold font-serif text-brand-purple leading-tight">Beija-Flor</span>
         </div>
       </a>
@@ -28,15 +29,18 @@
       </div>
 
       <!-- Mobile Menu Button -->
-      <button (click)="toggleMobileMenu()" class="lg:hidden p-2 text-brand-purple hover:bg-brand-purple/5 rounded-full transition-colors focus:outline-none z-50">
+      <button (click)="toggleMobileMenu()"
+        class="lg:hidden p-2 text-brand-purple hover:bg-brand-purple/5 rounded-full transition-colors focus:outline-none z-50">
         @if (!isMobileMenuOpen) {
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-          </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+          class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
         } @else {
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+          class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
         }
       </button>
     </div>
@@ -44,21 +48,27 @@
 
   <!-- Mobile Menu Overlay -->
   @if (isMobileMenuOpen) {
-    <div class="fixed inset-0 z-40 bg-white pt-24 px-6 lg:hidden overflow-y-auto animate-fade-in">
-      <nav class="flex flex-col gap-6 text-xl font-bold font-serif text-brand-purple">
-        <a routerLink="/" (click)="toggleMobileMenu()" class="border-b border-brand-purple/10 pb-4 hover:text-brand-terracota transition-colors">Início</a>
-        <a routerLink="/institucional" (click)="toggleMobileMenu()" class="border-b border-brand-purple/10 pb-4 hover:text-brand-terracota transition-colors">Institucional</a>
-        <a routerLink="/projetos" (click)="toggleMobileMenu()" class="border-b border-brand-purple/10 pb-4 hover:text-brand-terracota transition-colors">Projetos</a>
-        <a routerLink="/noticias" (click)="toggleMobileMenu()" class="border-b border-brand-purple/10 pb-4 hover:text-brand-terracota transition-colors">Notícias</a>
-        <a routerLink="/galeria" (click)="toggleMobileMenu()" class="border-b border-brand-purple/10 pb-4 hover:text-brand-terracota transition-colors">Galeria</a>
-        <a routerLink="/transparencia" (click)="toggleMobileMenu()" class="border-b border-brand-purple/10 pb-4 hover:text-brand-terracota transition-colors">Transparência</a>
-        
-        <div class="pt-6">
-          <a routerLink="/contato" (click)="toggleMobileMenu()" class="btn-primary w-full text-center py-4">
-            Fale Conosco
-          </a>
-        </div>
-      </nav>
-    </div>
+  <div class="fixed inset-0 z-40 bg-white pt-24 px-6 lg:hidden overflow-y-auto animate-fade-in">
+    <nav class="flex flex-col gap-6 text-xl font-bold font-serif text-brand-purple">
+      <a routerLink="/" (click)="toggleMobileMenu()"
+        class="border-b border-brand-purple/10 pb-4 hover:text-brand-terracota transition-colors">Início</a>
+      <a routerLink="/institucional" (click)="toggleMobileMenu()"
+        class="border-b border-brand-purple/10 pb-4 hover:text-brand-terracota transition-colors">Institucional</a>
+      <a routerLink="/projetos" (click)="toggleMobileMenu()"
+        class="border-b border-brand-purple/10 pb-4 hover:text-brand-terracota transition-colors">Projetos</a>
+      <a routerLink="/noticias" (click)="toggleMobileMenu()"
+        class="border-b border-brand-purple/10 pb-4 hover:text-brand-terracota transition-colors">Notícias</a>
+      <a routerLink="/galeria" (click)="toggleMobileMenu()"
+        class="border-b border-brand-purple/10 pb-4 hover:text-brand-terracota transition-colors">Galeria</a>
+      <a routerLink="/transparencia" (click)="toggleMobileMenu()"
+        class="border-b border-brand-purple/10 pb-4 hover:text-brand-terracota transition-colors">Transparência</a>
+
+      <div class="pt-6">
+        <a routerLink="/contato" (click)="toggleMobileMenu()" class="btn-primary w-full text-center py-4">
+          Fale Conosco
+        </a>
+      </div>
+    </nav>
+  </div>
   }
 </header>

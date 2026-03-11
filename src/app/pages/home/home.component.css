@@ -1,17 +1,17 @@
-.hero{
+.hero {
 
-min-height:70vh;
+    min-height: 70vh;
 
-background:
-linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
-url("https://picsum.photos/1920/1080");
+    background:
+        linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)),
+        url("/beija-flor-junina-apresentacao-2025-sim-02.png");
 
-background-size:cover;
+    background-size: cover;
 
-background-position:center;
+    background-position: center;
 
-display:flex;
+    display: flex;
 
-align-items:center;
+    align-items: center;
 
 }

@@ -11,7 +11,8 @@
     <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
       <!-- Text Content -->
       <div class="max-w-2xl">
-        <div class="inline-flex items-center gap-2 rounded-full border border-brand-terracota/20 bg-white/60 backdrop-blur-sm px-4 py-2 text-sm text-brand-terracota font-medium shadow-sm mb-8">
+        <div
+          class="inline-flex items-center gap-2 rounded-full border border-brand-terracota/20 bg-white/60 backdrop-blur-sm px-4 py-2 text-sm text-brand-terracota font-medium shadow-sm mb-8">
           <span class="relative flex h-2.5 w-2.5">
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-amber opacity-75"></span>
             <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-amber"></span>
@@ -20,12 +21,14 @@
         </div>
 
         <h1 class="text-5xl md:text-6xl lg:text-[4.5rem] font-bold text-brand-purple leading-[1.05] tracking-tight">
-          Tradição que <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-terracota to-brand-amber">emociona</span>.
+          Tradição que <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-brand-terracota to-brand-amber">emociona</span>.
           <span class="block mt-2">Arte que transforma.</span>
         </h1>
 
         <p class="mt-8 text-lg md:text-xl leading-relaxed text-brand-purple/75 font-sans">
-          O Instituto Beija-Flor une cultura, esporte, memória e consciência social em projetos que fortalecem a identidade comunitária e levam mensagens de inclusão para dentro e fora da arena junina.
+          O Instituto Beija-Flor une cultura, esporte, memória e consciência social em projetos que fortalecem a
+          identidade comunitária e levam mensagens de inclusão para dentro e fora da arena junina.
         </p>
 
         <div class="mt-10 flex flex-wrap gap-4 items-center">
@@ -39,10 +42,17 @@
 
         <!-- Metric highlights -->
         <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div class="card-glass p-5 transition-transform hover:-translate-y-1">
-            <p class="text-3xl font-bold font-serif text-brand-terracota">2019</p>
-            <p class="mt-1 text-xs text-brand-purple/60 uppercase tracking-wide font-semibold">Fundação</p>
+          <!-- Relógio de História -->
+          <div
+            class="card-glass p-5 transition-transform hover:-translate-y-1 bg-gradient-to-br from-brand-terracota/10 to-transparent border-brand-terracota/30">
+            <p class="text-3xl font-bold font-serif text-brand-terracota tabular-nums">{{ years() }} Anos</p>
+            <p class="mt-1 text-[10px] text-brand-purple/60 uppercase tracking-wide font-semibold">De história e impacto
+            </p>
+            <div class="mt-2 text-[10px] text-brand-terracota/80 font-mono">
+              {{ days() }} dias de missão
+            </div>
           </div>
+
           <div class="card-glass p-5 transition-transform hover:-translate-y-1">
             <p class="text-3xl font-bold font-serif text-brand-terracota">600+</p>
             <p class="mt-1 text-xs text-brand-purple/60 uppercase tracking-wide font-semibold">Foliões</p>
@@ -52,32 +62,55 @@
             <p class="mt-1 text-xs text-brand-purple/60 uppercase tracking-wide font-semibold">Municípios</p>
           </div>
           <div class="card-glass p-5 transition-transform hover:-translate-y-1">
-            <p class="text-3xl font-bold font-serif text-brand-terracota bg-brand-terracota text-white w-12 h-12 flex items-center justify-center rounded-xl">👑</p>
+            <p
+              class="text-3xl font-bold font-serif text-brand-terracota bg-brand-terracota text-white w-12 h-12 flex items-center justify-center rounded-xl">
+              👑</p>
             <p class="mt-2 text-xs text-brand-purple/60 uppercase tracking-wide font-semibold">Campeões</p>
           </div>
         </div>
       </div>
 
-      <!-- Image/Visual Composition -->
-      <div class="relative lg:h-[650px] flex items-center justify-center">
-        <!-- Main Image Card -->
-        <div class="relative z-10 w-full max-w-md mx-auto aspect-[3/4] rounded-3xl bg-white p-3 shadow-2xl rotate-2 transition-all duration-500 hover:rotate-0 hover:scale-[1.02]">
-          <div class="w-full h-full rounded-2xl overflow-hidden relative">
-            <img src="https://picsum.photos/900/1200?random=31" alt="Apresentação cultural" class="w-full h-full object-cover" />
-            
-            <!-- Glass Overlay Info -->
-            <div class="absolute bottom-4 left-4 right-4 rounded-xl bg-brand-purple/80 backdrop-blur-md p-5 text-white border border-white/10 shadow-lg">
-              <p class="text-xs uppercase tracking-[0.24em] text-brand-amber font-semibold mb-1">Projeto em destaque</p>
-              <h3 class="text-xl font-bold font-serif">Junina Beija-Flor</h3>
+      <!-- Image/Visual Composition (Carousel) -->
+      <div class="relative lg:h-[650px] flex items-center justify-center overflow-hidden">
+        <div class="relative w-full max-w-md mx-auto aspect-[3/4]">
+          @for (image of carouselImages; track image.url; let i = $index) {
+          <div class="absolute inset-0 transition-all duration-1000 ease-in-out transform" [ngClass]="{
+              'opacity-100 translate-x-0 z-10': currentSlide() === i,
+              'opacity-0 translate-x-full z-0': currentSlide() !== i
+            }">
+            <div
+              class="relative w-full h-full rounded-3xl bg-white p-3 shadow-2xl transition-all duration-500 hover:scale-[1.02]">
+              <div class="w-full h-full rounded-2xl overflow-hidden relative">
+                <img [src]="image.url" [alt]="image.title" class="w-full h-full object-cover" />
+
+                <!-- Glass Overlay Info -->
+                <div
+                  class="absolute bottom-4 left-4 right-4 rounded-xl bg-brand-purple/80 backdrop-blur-md p-5 text-white border border-white/10 shadow-lg">
+                  <p class="text-xs uppercase tracking-[0.24em] text-brand-amber font-semibold mb-1">{{ image.subtitle
+                    }}</p>
+                  <h3 class="text-xl font-bold font-serif">{{ image.title }}</h3>
+                </div>
+              </div>
             </div>
           </div>
+          }
+
+          <!-- Carousel Controls -->
+          <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+            @for (image of carouselImages; track $index; let i = $index) {
+            <button (click)="setSlide(i)" class="w-3 h-3 rounded-full transition-all duration-300"
+              [ngClass]="currentSlide() === i ? 'bg-brand-terracota w-8' : 'bg-brand-purple/20 hover:bg-brand-purple/40'"></button>
+            }
+          </div>
         </div>
-        
+
         <!-- Decoration elements -->
-        <div class="absolute top-[10%] -left-4 z-20 card-glass p-4 rotate-[-6deg] shadow-xl animate-[bounce_5s_infinite]">
+        <div
+          class="absolute top-[10%] -left-4 z-20 card-glass p-4 rotate-[-6deg] shadow-xl animate-[bounce_5s_infinite]">
           <span class="text-2xl">🔥</span>
         </div>
-        <div class="absolute bottom-[20%] -right-4 z-20 card-glass p-4 rotate-[12deg] shadow-xl animate-[bounce_6s_infinite_reverse]">
+        <div
+          class="absolute bottom-[20%] -right-4 z-20 card-glass p-4 rotate-[12deg] shadow-xl animate-[bounce_6s_infinite_reverse]">
           <span class="text-2xl">🪗</span>
         </div>
       </div>
@@ -92,14 +125,11 @@
       <div class="relative order-2 lg:order-1">
         <!-- Image composition -->
         <div class="relative z-10 rounded-[2.5rem] overflow-hidden shadow-2xl shrink-0">
-          <img
-            src="https://picsum.photos/900/800?random=41"
-            alt="História do Instituto"
-            class="w-full aspect-[4/5] object-cover transition-transform duration-700 hover:scale-105"
-          />
+          <img src="beija-flor-junina-03-sim.png" alt="História do Instituto"
+            class="w-full aspect-[4/5] object-cover transition-transform duration-700 hover:scale-105" />
           <div class="absolute inset-0 bg-gradient-to-t from-brand-purple/60 to-transparent pointer-events-none"></div>
         </div>
-        
+
         <!-- Decorative overlapping card -->
         <div class="absolute -bottom-8 -right-8 lg:-right-12 z-20 card-glass p-6 max-w-[240px] hidden sm:block">
           <p class="text-sm font-bold text-brand-terracota">Raízes fortes</p>
@@ -113,31 +143,42 @@
           Uma trajetória construída com evolução, cultura e pertencimento.
         </h2>
         <p class="section-subtitle mt-6">
-          O Instituto Beija-Flor nasceu de um percurso marcado por reinvenção e compromisso com a cultura de Roraima. Sua origem remonta à Explosão Junina, passando pela Agremiação Folclórica Cultural Sanfona Junina, até consolidar sua identidade atual.
+          O Instituto Beija-Flor nasceu de um percurso marcado por reinvenção e compromisso com a cultura de Roraima.
+          Sua origem remonta à Explosão Junina, passando pela Agremiação Folclórica Cultural Sanfona Junina, até
+          consolidar sua identidade atual.
         </p>
 
         <div class="mt-10 space-y-6">
           <div class="flex gap-4">
-            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-brand-terracota/10 flex items-center justify-center text-brand-terracota font-bold">1</div>
+            <div
+              class="flex-shrink-0 w-12 h-12 rounded-full bg-brand-terracota/10 flex items-center justify-center text-brand-terracota font-bold">
+              1</div>
             <div>
               <p class="text-lg font-bold font-serif text-brand-purple">Origem</p>
-              <p class="mt-2 text-brand-purple/70 text-sm leading-relaxed">Início com a Explosão Junina nos tradicionais concursos do estado, plantando a semente do amor pelo São João.</p>
+              <p class="mt-2 text-brand-purple/70 text-sm leading-relaxed">Início com a Explosão Junina nos tradicionais
+                concursos do estado, plantando a semente do amor pelo São João.</p>
             </div>
           </div>
-          
+
           <div class="flex gap-4">
-            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-brand-terracota/10 flex items-center justify-center text-brand-terracota font-bold">2</div>
+            <div
+              class="flex-shrink-0 w-12 h-12 rounded-full bg-brand-terracota/10 flex items-center justify-center text-brand-terracota font-bold">
+              2</div>
             <div>
               <p class="text-lg font-bold font-serif text-brand-purple">Evolução</p>
-              <p class="mt-2 text-brand-purple/70 text-sm leading-relaxed">Fase de amadurecimento como Sanfona Junina por quatro anos, onde aperfeiçoamos nossa técnica e espetáculo.</p>
+              <p class="mt-2 text-brand-purple/70 text-sm leading-relaxed">Fase de amadurecimento como Sanfona Junina
+                por quatro anos, onde aperfeiçoamos nossa técnica e espetáculo.</p>
             </div>
           </div>
-          
+
           <div class="flex gap-4">
-            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-r from-brand-terracota to-brand-amber flex items-center justify-center text-white font-bold shadow-md">3</div>
+            <div
+              class="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-r from-brand-terracota to-brand-amber flex items-center justify-center text-white font-bold shadow-md">
+              3</div>
             <div>
               <p class="text-lg font-bold font-serif text-brand-purple">Expansão</p>
-              <p class="mt-2 text-brand-purple/70 text-sm leading-relaxed">Nossa atuação transcende o tablado, alcançando frentes carnavalescas, ligas esportivas comunitárias, ações sociais e educativas.</p>
+              <p class="mt-2 text-brand-purple/70 text-sm leading-relaxed">Nossa atuação transcende o tablado,
+                alcançando frentes carnavalescas, ligas esportivas comunitárias, ações sociais e educativas.</p>
             </div>
           </div>
         </div>
@@ -148,7 +189,9 @@
 
 <!-- TIMELINE -->
 <section class="py-24 md:py-32 bg-brand-light relative overflow-hidden">
-  <div class="absolute -top-[10%] -right-[15%] w-[40%] h-[40%] rounded-full bg-brand-amber/10 blur-[100px] pointer-events-none"></div>
+  <div
+    class="absolute -top-[10%] -right-[15%] w-[40%] h-[40%] rounded-full bg-brand-amber/10 blur-[100px] pointer-events-none">
+  </div>
 
   <div class="section-container relative z-10">
     <div class="max-w-3xl mx-auto text-center">
@@ -157,56 +200,82 @@
         Cada ano transforma a arena em palco de mensagem e reflexão.
       </h2>
       <p class="section-subtitle mx-auto mt-6">
-        A Junina Beija-Flor desenvolve espetáculos que unem tradição popular, narrativa visual e temas que dialogam com a sociedade contemporânea.
+        A Junina Beija-Flor desenvolve espetáculos que unem tradição popular, narrativa visual e temas que dialogam com
+        a sociedade contemporânea.
       </p>
     </div>
 
     <!-- Timeline Grid with staggered cards -->
     <div class="mt-20 grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-      <div class="card-glass p-8 group transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border-l-4 border-l-brand-amber">
-        <p class="text-3xl font-bold font-serif text-brand-terracota/30 mb-2 transition-colors group-hover:text-brand-terracota">2019</p>
+      <div
+        class="card-glass p-8 group transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border-l-4 border-l-brand-amber">
+        <p
+          class="text-3xl font-bold font-serif text-brand-terracota/30 mb-2 transition-colors group-hover:text-brand-terracota">
+          2019</p>
         <h3 class="text-2xl font-bold font-serif text-brand-purple mt-2 mb-3">O Baile na Corte do São João</h3>
-        <p class="text-brand-purple/70 text-sm leading-relaxed">Espetáculo de estreia que apresentou a origem das quadrilhas juninas, mostrando a influência europeia na cultura sertaneja.</p>
+        <p class="text-brand-purple/70 text-sm leading-relaxed">Espetáculo de estreia que apresentou a origem das
+          quadrilhas juninas, mostrando a influência europeia na cultura sertaneja.</p>
       </div>
 
-      <div class="card-glass p-8 group transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border-l-4 border-l-brand-terracota">
-        <p class="text-3xl font-bold font-serif text-brand-terracota/30 mb-2 transition-colors group-hover:text-brand-terracota">2020</p>
+      <div
+        class="card-glass p-8 group transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border-l-4 border-l-brand-terracota">
+        <p
+          class="text-3xl font-bold font-serif text-brand-terracota/30 mb-2 transition-colors group-hover:text-brand-terracota">
+          2020</p>
         <h3 class="text-2xl font-bold font-serif text-brand-purple mt-2 mb-3">Xangô, o Rei Menino</h3>
-        <p class="text-brand-purple/70 text-sm leading-relaxed">Em formato de live adaptada para a pandemia, trouxe a história dos povos africanos e sua chegada ao Brasil com rica pesquisa histórica.</p>
+        <p class="text-brand-purple/70 text-sm leading-relaxed">Em formato de live adaptada para a pandemia, trouxe a
+          história dos povos africanos e sua chegada ao Brasil com rica pesquisa histórica.</p>
       </div>
 
-      <div class="card-glass p-8 group transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border-l-4 border-l-brand-purple">
-        <p class="text-3xl font-bold font-serif text-brand-terracota/30 mb-2 transition-colors group-hover:text-brand-terracota">2021</p>
+      <div
+        class="card-glass p-8 group transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border-l-4 border-l-brand-purple">
+        <p
+          class="text-3xl font-bold font-serif text-brand-terracota/30 mb-2 transition-colors group-hover:text-brand-terracota">
+          2021</p>
         <h3 class="text-2xl font-bold font-serif text-brand-purple mt-2 mb-3">Entre o Bem e o Mal</h3>
-        <p class="text-brand-purple/70 text-sm leading-relaxed">Live que levou cultura popular para milhares de lares durante um período difícil, abordando dualidades da natureza humana.</p>
+        <p class="text-brand-purple/70 text-sm leading-relaxed">Live que levou cultura popular para milhares de lares
+          durante um período difícil, abordando dualidades da natureza humana.</p>
       </div>
 
-      <div class="card-glass p-8 group transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border-l-4 border-l-brand-amber lg:col-start-1">
-        <p class="text-3xl font-bold font-serif text-brand-terracota/30 mb-2 transition-colors group-hover:text-brand-terracota">2022</p>
+      <div
+        class="card-glass p-8 group transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border-l-4 border-l-brand-amber lg:col-start-1">
+        <p
+          class="text-3xl font-bold font-serif text-brand-terracota/30 mb-2 transition-colors group-hover:text-brand-terracota">
+          2022</p>
         <h3 class="text-2xl font-bold font-serif text-brand-purple mt-2 mb-3">Corrupção e consequências</h3>
-        <p class="text-brand-purple/70 text-sm leading-relaxed">Poderosa temática sobre ética e cidadania na sociedade brasileira, que rendeu a conquista do terceiro lugar no grupo de acesso.</p>
+        <p class="text-brand-purple/70 text-sm leading-relaxed">Poderosa temática sobre ética e cidadania na sociedade
+          brasileira, que rendeu a conquista do terceiro lugar no grupo de acesso.</p>
       </div>
 
-      <div class="card-glass p-8 group transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border-l-4 border-l-brand-terracota">
-        <p class="text-3xl font-bold font-serif text-brand-terracota/30 mb-2 transition-colors group-hover:text-brand-terracota">2024</p>
+      <div
+        class="card-glass p-8 group transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border-l-4 border-l-brand-terracota">
+        <p
+          class="text-3xl font-bold font-serif text-brand-terracota/30 mb-2 transition-colors group-hover:text-brand-terracota">
+          2024</p>
         <h3 class="text-2xl font-bold font-serif text-brand-purple mt-2 mb-3">Água Fonte da Vida</h3>
-        <p class="text-brand-purple/70 text-sm leading-relaxed">Urgente mensagem de preservação ambiental, destacando a valorização dos recursos hídricos e a crise climática mundial.</p>
+        <p class="text-brand-purple/70 text-sm leading-relaxed">Urgente mensagem de preservação ambiental, destacando a
+          valorização dos recursos hídricos e a crise climática mundial.</p>
       </div>
 
       <!-- Hero Card - Campeões -->
-      <div class="rounded-3xl p-1 bg-gradient-to-br from-brand-terracota via-brand-amber to-brand-purple transform transition-transform duration-300 hover:-translate-y-2 shadow-xl shadow-brand-terracota/20 relative">
+      <div
+        class="rounded-3xl p-1 bg-gradient-to-br from-brand-terracota via-brand-amber to-brand-purple transform transition-transform duration-300 hover:-translate-y-2 shadow-xl shadow-brand-terracota/20 relative">
         <div class="absolute top-0 right-0 p-4 animate-bounce text-2xl">🏆</div>
         <div class="bg-brand-purple h-full rounded-[20px] p-8 text-white relative overflow-hidden">
-          <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_rgba(245,158,11,0.2),_transparent_70%)]"></div>
-          
+          <div
+            class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_rgba(245,158,11,0.2),_transparent_70%)]">
+          </div>
+
           <div class="relative z-10">
             <p class="text-3xl font-bold font-serif text-brand-amber mb-2">2025</p>
             <h3 class="text-2xl font-bold font-serif text-white mt-2 mb-3">As Cores do Amor</h3>
             <p class="text-white/80 text-sm leading-relaxed mb-6">
-              Espetáculo CAMPEÃO com apelo por respeito e justiça, condenando a homofobia. Elevou o debate social no arraial e garantiu nossa vaga no grupo de acesso em 2026.
+              Espetáculo CAMPEÃO com apelo por respeito e justiça, condenando a homofobia. Elevou o debate social no
+              arraial e garantiu nossa vaga no grupo de acesso em 2026.
             </p>
-            
-            <span class="inline-flex items-center text-xs font-bold uppercase tracking-wider text-brand-amber">Projeto Campeão</span>
+
+            <span class="inline-flex items-center text-xs font-bold uppercase tracking-wider text-brand-amber">Projeto
+              Campeão</span>
           </div>
         </div>
       </div>
@@ -223,58 +292,71 @@
         Atuação que ecoa muito além da arena junina.
       </h2>
       <p class="section-subtitle mt-6">
-        Como um verdadeiro Instituto, nós fomentamos iniciativas que abraçam a cultura o ano inteiro, envolvendo a sociedade e promovendo união.
+        Como um verdadeiro Instituto, nós fomentamos iniciativas que abraçam a cultura o ano inteiro, envolvendo a
+        sociedade e promovendo união.
       </p>
     </div>
 
     <!-- Cards container with flex wrap for different screen sizes -->
     <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-      <article class="group rounded-[2rem] overflow-hidden bg-white shadow-xl shadow-brand-purple/5 border border-brand-purple/5 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+      <article
+        class="group rounded-[2rem] overflow-hidden bg-white shadow-xl shadow-brand-purple/5 border border-brand-purple/5 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
         <div class="h-64 overflow-hidden relative">
-          <img src="https://picsum.photos/700/420?random=51" alt="Junina Beija-Flor" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+          <img src="beija-flor-junina-apresentacao-2025-sim-01.png" alt="Junina Beija-Flor"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
         </div>
         <div class="p-8 relative bg-white -mt-6 rounded-t-[2rem] z-10">
           <p class="text-xs uppercase tracking-widest text-brand-amber font-bold mb-2">Projeto principal</p>
           <h3 class="text-2xl font-bold font-serif text-brand-purple mb-3">Junina Beija-Flor</h3>
           <p class="text-brand-purple/70 text-sm leading-relaxed mb-6">
-            Espetáculos anuais que transformam os concursos de quadrilha em poderosas plataformas de conscientização social e ambiental.
+            Espetáculos anuais que transformam os concursos de quadrilha em poderosas plataformas de conscientização
+            social e ambiental.
           </p>
-          <a routerLink="/projetos" class="inline-flex items-center text-sm font-bold text-brand-terracota group-hover:text-brand-amber transition-colors">
+          <a routerLink="/projetos"
+            class="inline-flex items-center text-sm font-bold text-brand-terracota group-hover:text-brand-amber transition-colors">
             Conhecer <span class="ml-2 group-hover:translate-x-1 transition-transform">→</span>
           </a>
         </div>
       </article>
 
-      <article class="group rounded-[2rem] overflow-hidden bg-white shadow-xl shadow-brand-purple/5 border border-brand-purple/5 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+      <article
+        class="group rounded-[2rem] overflow-hidden bg-white shadow-xl shadow-brand-purple/5 border border-brand-purple/5 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
         <div class="h-64 overflow-hidden relative">
-          <img src="https://picsum.photos/700/420?random=52" alt="Bloco Me Beija" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+          <img src="me-beija-2024-folioes-sim-01.png" alt="Bloco Me Beija"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
         </div>
         <div class="p-8 relative bg-white -mt-6 rounded-t-[2rem] z-10">
           <p class="text-xs uppercase tracking-widest text-brand-amber font-bold mb-2">Carnaval e euforia</p>
           <h3 class="text-2xl font-bold font-serif text-brand-purple mb-3">Bloco Me Beija</h3>
           <p class="text-brand-purple/70 text-sm leading-relaxed mb-6">
-            Bloco de carnaval que desfila na avenida com mais de 600 foliões, democratizando a festa e ocupando espaços públicos.
+            Bloco de carnaval que desfila na avenida com mais de 600 foliões, democratizando a festa e ocupando espaços
+            públicos.
           </p>
-          <a routerLink="/projetos" class="inline-flex items-center text-sm font-bold text-brand-terracota group-hover:text-brand-amber transition-colors">
+          <a routerLink="/projetos"
+            class="inline-flex items-center text-sm font-bold text-brand-terracota group-hover:text-brand-amber transition-colors">
             Conhecer <span class="ml-2 group-hover:translate-x-1 transition-transform">→</span>
           </a>
         </div>
       </article>
 
-      <article class="group rounded-[2rem] overflow-hidden bg-white shadow-xl shadow-brand-purple/5 border border-brand-purple/5 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+      <article
+        class="group rounded-[2rem] overflow-hidden bg-white shadow-xl shadow-brand-purple/5 border border-brand-purple/5 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
         <div class="h-64 overflow-hidden relative">
-          <img src="https://picsum.photos/700/420?random=53" alt="Anarriê Alavantú" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+          <img src="acao-social-2024-01.png" alt="Ação Social"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
         </div>
         <div class="p-8 relative bg-white -mt-6 rounded-t-[2rem] z-10">
           <p class="text-xs uppercase tracking-widest text-brand-amber font-bold mb-2">Circulação cultural</p>
           <h3 class="text-2xl font-bold font-serif text-brand-purple mb-3">Anarriê Alavantú</h3>
           <p class="text-brand-purple/70 text-sm leading-relaxed mb-6">
-            Projeto popular itinerante com apresentações no interior e capital, unindo shows, oficinas de dança e customização de roupas.
+            Projeto popular itinerante com apresentações no interior e capital, unindo shows, oficinas de dança e
+            customização de roupas.
           </p>
-          <a routerLink="/projetos" class="inline-flex items-center text-sm font-bold text-brand-terracota group-hover:text-brand-amber transition-colors">
+          <a routerLink="/projetos"
+            class="inline-flex items-center text-sm font-bold text-brand-terracota group-hover:text-brand-amber transition-colors">
             Conhecer <span class="ml-2 group-hover:translate-x-1 transition-transform">→</span>
           </a>
         </div>
@@ -285,8 +367,10 @@
 
 <!-- LATEST NEWS -->
 <section class="py-24 md:py-32 bg-white relative">
-  <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(124,45,18,0.03),_transparent_40%)] pointer-events-none"></div>
-  
+  <div
+    class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(124,45,18,0.03),_transparent_40%)] pointer-events-none">
+  </div>
+
   <div class="section-container relative z-10">
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
       <div class="max-w-2xl">
@@ -295,74 +379,92 @@
           Acontecendo agora
         </h2>
       </div>
-      <a routerLink="/noticias" class="inline-flex items-center text-sm font-bold text-brand-terracota group hover:text-brand-amber transition-colors shrink-0">
+      <a routerLink="/noticias"
+        class="inline-flex items-center text-sm font-bold text-brand-terracota group hover:text-brand-amber transition-colors shrink-0">
         Ver todas as notícias <span class="ml-2 group-hover:translate-x-1 transition-transform">→</span>
       </a>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <!-- News Card 1 -->
-      <article class="group bg-white rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-brand-purple/5 hover:shadow-2xl transition-all duration-300 flex flex-col h-full">
+      <article
+        class="group bg-white rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-brand-purple/5 hover:shadow-2xl transition-all duration-300 flex flex-col h-full">
         <div class="relative h-56 overflow-hidden">
-          <img src="https://picsum.photos/600/400?random=101" alt="Ensaio aberto" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-          <div class="absolute top-4 left-4 rounded-full bg-brand-terracota text-white px-3 py-1 text-xs font-bold uppercase tracking-wider backdrop-blur-md">
+          <img src="beija-flor-junina-apresentacao-2025-sim-03.png" alt="Beija-Flor Campeã 2025"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+          <div
+            class="absolute top-4 left-4 rounded-full bg-brand-terracota text-white px-3 py-1 text-xs font-bold uppercase tracking-wider backdrop-blur-md">
             Arraial
           </div>
         </div>
         <div class="p-8 flex flex-col flex-grow">
-          <time datetime="2026-05-15" class="text-xs text-brand-purple/50 font-medium mb-3">15 de Maio, 2026</time>
-          <h3 class="text-xl font-bold font-serif text-brand-purple mb-4 group-hover:text-brand-terracota transition-colors line-clamp-2">
-            Ensaios abertos para a temporada 2026 começam neste final de semana
+          <time datetime="2025-07-15" class="text-xs text-brand-purple/50 font-medium mb-3">Temporada 2025</time>
+          <h3
+            class="text-xl font-bold font-serif text-brand-purple mb-4 group-hover:text-brand-terracota transition-colors line-clamp-2">
+            Espetáculo "As Cores do Amor" consagra Junina Beija-Flor como Grande Campeã
           </h3>
           <p class="text-brand-purple/70 text-sm leading-relaxed mb-6 line-clamp-3">
-            A Junina Beija-Flor convida toda a comunidade para prestigiar os primeiros ensaios gerais do nosso novo espetáculo, que promete emocionar o público na arena.
+            Com um apelo por mais respeito e justiça, a quadrilha emocionou a arena e conquistou a vaga no grupo de
+            Acesso 2026.
           </p>
           <div class="mt-auto">
-            <a routerLink="/noticias" class="text-brand-terracota font-bold text-sm hover:underline">Ler matéria completa</a>
+            <a routerLink="/noticias" class="text-brand-terracota font-bold text-sm hover:underline">Ler matéria
+              completa</a>
           </div>
         </div>
       </article>
 
       <!-- News Card 2 -->
-      <article class="group bg-white rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-brand-purple/5 hover:shadow-2xl transition-all duration-300 flex flex-col h-full">
+      <article
+        class="group bg-white rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-brand-purple/5 hover:shadow-2xl transition-all duration-300 flex flex-col h-full">
         <div class="relative h-56 overflow-hidden">
-          <img src="https://picsum.photos/600/400?random=102" alt="Oficina de costura" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-          <div class="absolute top-4 left-4 rounded-full bg-brand-amber text-brand-purple px-3 py-1 text-xs font-bold uppercase tracking-wider backdrop-blur-md">
-            Ação Social
+          <img src="beija-flor-junina-2020-01-sim.png" alt="Live Xangô o Rei Menino"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+          <div
+            class="absolute top-4 left-4 rounded-full bg-brand-amber text-brand-purple px-3 py-1 text-xs font-bold uppercase tracking-wider backdrop-blur-md">
+            História
           </div>
         </div>
         <div class="p-8 flex flex-col flex-grow">
-          <time datetime="2026-04-22" class="text-xs text-brand-purple/50 font-medium mb-3">22 de Abril, 2026</time>
-          <h3 class="text-xl font-bold font-serif text-brand-purple mb-4 group-hover:text-brand-terracota transition-colors line-clamp-2">
-            Oficina de bordado e figurino capacita 40 mulheres da comunidade
+          <time datetime="2020-06-15" class="text-xs text-brand-purple/50 font-medium mb-3">Temporada 2020/2021</time>
+          <h3
+            class="text-xl font-bold font-serif text-brand-purple mb-4 group-hover:text-brand-terracota transition-colors line-clamp-2">
+            A reinvenção na Pandemia: Live "Xangô o Rei Menino"
           </h3>
           <p class="text-brand-purple/70 text-sm leading-relaxed mb-6 line-clamp-3">
-            O projeto social do Instituto concluiu mais uma turma de capacitação, gerando renda e preservando as técnicas tradicionais de confecção junina.
+            As tradicionais festas adaptaram-se ao formato de transmissões ao vivo, levando a alegria aos lares das
+            famílias roraimenses.
           </p>
           <div class="mt-auto">
-            <a routerLink="/noticias" class="text-brand-terracota font-bold text-sm hover:underline">Ler matéria completa</a>
+            <a routerLink="/noticias" class="text-brand-terracota font-bold text-sm hover:underline">Ler matéria
+              completa</a>
           </div>
         </div>
       </article>
 
       <!-- News Card 3 -->
-      <article class="group bg-white rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-brand-purple/5 hover:shadow-2xl transition-all duration-300 flex flex-col h-full">
+      <article
+        class="group bg-white rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-brand-purple/5 hover:shadow-2xl transition-all duration-300 flex flex-col h-full">
         <div class="relative h-56 overflow-hidden">
-          <img src="https://picsum.photos/600/400?random=103" alt="Carnaval Bloco Me Beija" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-          <div class="absolute top-4 left-4 rounded-full bg-brand-purple text-white px-3 py-1 text-xs font-bold uppercase tracking-wider backdrop-blur-md">
-            Carnaval
+          <img src="acao-social-2024-02.png" alt="Ação Social Distrito Industrial"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+          <div
+            class="absolute top-4 left-4 rounded-full bg-brand-purple text-white px-3 py-1 text-xs font-bold uppercase tracking-wider backdrop-blur-md">
+            Social
           </div>
         </div>
         <div class="p-8 flex flex-col flex-grow">
-          <time datetime="2026-02-28" class="text-xs text-brand-purple/50 font-medium mb-3">28 de Fevereiro, 2026</time>
-          <h3 class="text-xl font-bold font-serif text-brand-purple mb-4 group-hover:text-brand-terracota transition-colors line-clamp-2">
-            Bloco Me Beija quebra recorde de público no carnaval de Boa Vista
+          <time datetime="2024-10-12" class="text-xs text-brand-purple/50 font-medium mb-3">Ano 2024</time>
+          <h3
+            class="text-xl font-bold font-serif text-brand-purple mb-4 group-hover:text-brand-terracota transition-colors line-clamp-2">
+            Instituto realiza grande Ação Social no Distrito Industrial
           </h3>
           <p class="text-brand-purple/70 text-sm leading-relaxed mb-6 line-clamp-3">
-            Com muita alegria e irreverência, nosso bloco arrastou centenas de foliões na avenida, consolidando o Beija-Flor também na folia de momo.
+            O projeto levou atividades recreativas, presentes e apoio para dezenas de crianças carentes da região.
           </p>
           <div class="mt-auto">
-            <a routerLink="/noticias" class="text-brand-terracota font-bold text-sm hover:underline">Ler matéria completa</a>
+            <a routerLink="/noticias" class="text-brand-terracota font-bold text-sm hover:underline">Ler matéria
+              completa</a>
           </div>
         </div>
       </article>
@@ -376,30 +478,35 @@
     <div class="rounded-[3rem] overflow-hidden relative p-10 md:p-20 shadow-2xl flex flex-col items-center text-center">
       <!-- Gradient Background -->
       <div class="absolute inset-0 bg-gradient-to-tr from-[#3b1f2b] via-brand-terracota to-brand-amber"></div>
-      
+
       <!-- Content Elements -->
       <div class="relative z-10 max-w-3xl mx-auto flex flex-col items-center">
-        <div class="inline-flex items-center justify-center p-4 rounded-full bg-white/10 backdrop-blur-md mb-8 text-white shadow-lg border border-white/20">
+        <div
+          class="inline-flex items-center justify-center p-4 rounded-full bg-white/10 backdrop-blur-md mb-8 text-white shadow-lg border border-white/20">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         </div>
 
         <p class="text-sm font-bold uppercase tracking-[0.3em] text-brand-amber mb-4">Cultura e Esporte</p>
-        
+
         <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold font-serif text-white leading-tight mb-8">
           Apoie e fortaleça a nossa comunidade.
         </h2>
-        
+
         <p class="text-lg text-white/90 max-w-2xl mx-auto font-sans leading-relaxed mb-12">
-          Conheça profundamente os projetos do Instituto Beija-Flor, acompanhe nossa intensa trajetória e descubra como a arte, o esporte e a comunidade caminham atreladas em cada ação que criamos.
+          Conheça profundamente os projetos do Instituto Beija-Flor, acompanhe nossa intensa trajetória e descubra como
+          a arte, o esporte e a comunidade caminham atreladas em cada ação que criamos.
         </p>
-        
+
         <div class="flex flex-col sm:flex-row items-center justify-center gap-5 w-full">
-          <a routerLink="/projetos" class="w-full sm:w-auto px-8 py-4 rounded-full bg-white text-brand-terracota font-bold text-lg text-center hover:bg-brand-amber hover:text-white transition-all shadow-xl hover:-translate-y-1">
+          <a routerLink="/projetos"
+            class="w-full sm:w-auto px-8 py-4 rounded-full bg-white text-brand-terracota font-bold text-lg text-center hover:bg-brand-amber hover:text-white transition-all shadow-xl hover:-translate-y-1">
             Explorar Projetos
           </a>
-          <a routerLink="/contato" class="w-full sm:w-auto px-8 py-4 rounded-full bg-transparent border-2 border-white/40 text-white font-bold text-lg text-center hover:bg-white/10 transition-all hover:-translate-y-1">
+          <a routerLink="/contato"
+            class="w-full sm:w-auto px-8 py-4 rounded-full bg-transparent border-2 border-white/40 text-white font-bold text-lg text-center hover:bg-white/10 transition-all hover:-translate-y-1">
             Seja um parceiro
           </a>
         </div>
